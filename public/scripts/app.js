@@ -1,82 +1,45 @@
 'use strict';
 
-console.log('App.js is running!');
+//Arguments object - no longer bound with arrow functions
 
-//JSX - JavaScript XML
-var app = {
-    title: 'Indecision App',
-    subtitle: 'Put your life in the hands of a computer',
-    options: ['One', 'Two']
+var add = function add(a, b) {
+    //console.log(arguments);
+    return a + b;
 };
-var template = React.createElement(
-    'div',
-    null,
-    React.createElement(
-        'h1',
-        null,
-        app.title
-    ),
-    app.subtitle && React.createElement(
-        'p',
-        null,
-        app.subtitle
-    ),
-    React.createElement(
-        'p',
-        null,
-        app.options.length > 0 ? 'Here are your options' : 'No options'
-    ),
-    React.createElement(
-        'ol',
-        null,
-        React.createElement(
-            'li',
-            null,
-            'Item one'
-        ),
-        React.createElement(
-            'li',
-            null,
-            'Item two'
-        )
-    )
-);
+console.log(add(55, 1, 1001));
+
+//This keyword - no longer bound
 
 var user = {
     name: 'Bruno',
-    age: 32,
-    location: 'RJ'
-};
-function getLocation(location) {
-    if (location) {
-        return React.createElement(
-            'p',
-            null,
-            'Location ',
-            location
-        );
-    } //você pode colocar o else retornando undefined que da nos mesmo.
-}
-//Temos 3 exemplos de condicional (function technique) em JSX, o primeiro é operador ternario, segundo é lógico e operador e terceiro é if statements(se senão)
-//A tradução para o primeiro exemplo é, se não tiver user.name use a string 'Anonymous'
-//A tradução para o segundo exemplo é, se tiver um user.age e ele for maior que 18, mostre, se não não mostre nada
-//No terceiro exemplo, usamos a função getLocation, com o argumento user.location, se não tiver não mostre nada.
-var templateTwo = React.createElement(
-    'div',
-    null,
-    React.createElement(
-        'h1',
-        null,
-        user.name ? user.name : 'Anonymous'
-    ),
-    user.age && user.age >= 18 && React.createElement(
-        'p',
-        null,
-        'Age: ',
-        user.age
-    ),
-    getLocation(user.location)
-);
-var appRoot = document.getElementById('app');
+    cities: ['RJ', 'MG', 'SP'],
+    printPlacesLived: function printPlacesLived() {
+        var _this = this;
 
-ReactDOM.render(template, appRoot);
+        return this.cities.map(function (city) {
+            return _this.name + ' has lived in ' + city;
+        });
+    }
+};
+console.log(user.printPlacesLived());
+
+//.forEach form:
+/* this.cities.forEach((city) => {
+    console.log(this.name + ' has lived in ' + city);
+})
+}
+};
+user.printPlacesLived();*/
+
+var multiplier = {
+    numbers: [1, 2, 3],
+    multiplyBy: 2,
+    multiply: function multiply() {
+        var _this2 = this;
+
+        return this.numbers.map(function (number) {
+            return _this2.multiplyBy * number;
+        });
+    }
+};
+console.log(multiplier.multiply());

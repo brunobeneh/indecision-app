@@ -1,12 +1,12 @@
 console.log('App.js is running!');
 
 //JSX - JavaScript XML
-var app = {
+const app = {
     title: 'Indecision App',
     subtitle: 'Put your life in the hands of a computer',
     options: ['One', 'Two']
 };
-var template = (
+const template = (
     <div>
         <h1>{app.title}</h1>
         {app.subtitle && <p>{app.subtitle}</p>}
@@ -18,7 +18,7 @@ var template = (
     </div>
 );
 
-var user = {
+const user = {
     name: 'Bruno',
     age: 32,
     location: 'RJ'
@@ -32,13 +32,13 @@ function getLocation(location) {
 //A tradução para o primeiro exemplo é, se não tiver user.name use a string 'Anonymous'
 //A tradução para o segundo exemplo é, se tiver um user.age e ele for maior que 18, mostre, se não não mostre nada
 //No terceiro exemplo, usamos a função getLocation, com o argumento user.location, se não tiver não mostre nada.
-var templateTwo = (
+const templateTwo = (
     <div>
         <h1>{user.name ? user.name : 'Anonymous'}</h1>
         {(user.age && user.age >= 18) && <p>Age: {user.age}</p>}
         {getLocation(user.location)}
     </div>
 );
-var appRoot = document.getElementById('app');
+const appRoot = document.getElementById('app');
 
 ReactDOM.render(template, appRoot);
